@@ -64,30 +64,42 @@ useEffect(()=>{
 
 //handle delete function
 const handleDelete=(id)=>{
-    axios({
-        url:`http://localhost:3000/employees/${id}`,
-        method:"DELETE"
-    }).then((res)=>{
-        alert("Employee got deleted");
-        fetchEmployee();
-
-    }).catch((err)=>{
-        console.log(err)
-    })
+    if(confirm("Are you sure to delete the employee")){
+        axios({
+            url:`http://localhost:3000/employees/${id}`,
+            method:"DELETE"
+        }).then((res)=>{
+            alert("Employee got deleted");
+            fetchEmployee();
+    
+        }).catch((err)=>{
+            console.log(err)
+        })
+    }
+    
 
 }
 const handleSubmit=(e)=>{
 e.preventDefault();
+if(!newEmployee.name||!newEmployee.department||!newEmployee.designation){
+   alert("Fields are mandatory")
+   return
+}
+else{
+
+
 axios({
     url:"http://localhost:3000/employees/",
     method:"POST",
     data: newEmployee
 }).then((res)=>{
+    
     alert("Employee Got Added Sucessfully")
      fetchEmployee();
     //  setNewEmployee()
 
 })
+}
 
 }
 const handleChange=(e)=>{
@@ -97,9 +109,10 @@ const handleChange=(e)=>{
 
   return (
     <div>
-       <button onClick={()=>setAddBtn(!addBtn)}>Add Employee</button>
+       <button  style={{backgroundColor:"blueviolet" ,opacity:"0.4", color:"white", padding:"5px"}}onClick={()=>setAddBtn(!addBtn)}>Add Employee</button>
        { addBtn && (
       <div className="form">
+        <h3>Employee form</h3>
      <form action="" onSubmit={handleSubmit}>
     
         <input type="text"  placeholder='Enter Employee Name' name="name" value={newEmployee.name} onChange={handleChange}/>
@@ -110,7 +123,7 @@ const handleChange=(e)=>{
     <option value="HR">HR</option>
     <option value="Marketing">Marketing</option>
 </select>
-<input type="submit" value="submit" />
+<input id="submit"type="submit" value="submit" />
     </form>
     </div>
        )

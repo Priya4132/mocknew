@@ -1,17 +1,35 @@
 .form{
    
-    background-color: rgb(255, 251, 251);
+    background-color: rgb(177, 186, 206);
     gap:50px;
     justify-content: center;
 
 }
 .form form{
+    margin-left: 250px;
+    padding:20px;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
-    gap:30px;
+    gap:10px;
     align-content: center;
 width: 30%;
 
 
 }
-
+#submit{
+   background-color: blueviolet; 
+   opacity: 0.4;
+   color:white;
+   width: fit-content;
+   padding: 10px;
+   border: none;
+   align-items: center;
+}
+#submit:hover{
+    background-color:white ; 
+    opacity: 0.4;
+    color:blueviolet;
+   
+  
+}
