@@ -1,0 +1,17 @@
+.form{
+   
+    background-color: rgb(255, 251, 251);
+    gap:50px;
+    justify-content: center;
+
+}
+.form form{
+    display: flex;
+    flex-direction: column;
+    gap:30px;
+    align-content: center;
+width: 30%;
+
+
+}
+
